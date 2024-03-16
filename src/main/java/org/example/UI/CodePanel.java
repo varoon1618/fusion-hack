@@ -43,7 +43,7 @@ public class CodePanel extends JPanel {
       label.setBackground(new Color(255, 223, 0));
     }if(string.equals("Turn left")){
       label.setBackground(new Color(247, 206, 226));
-    }if(string.equals("Start loop (4)")){
+    }if(string.equals("Start loop (3)")){
       label.setBackground(new Color(235,45,58));
     }if(string.equals("End loop")){
       label.setBackground(new Color(235,45,58));
@@ -58,7 +58,7 @@ public class CodePanel extends JPanel {
   }
 
   public void updateCodeBlocks(String command){
-    if(command.equals("Start loop (4)")){
+    if(command.equals("Start loop (3)")){
       isCurrentlyLoop = true;
     }if(command.equals("End loop")) {
       isCurrentlyLoop = false;
@@ -127,6 +127,51 @@ public class CodePanel extends JPanel {
     }
     revalidate();
     repaint();
+  }
+
+  public void showSolution(int level){
+    if(level == 1){
+      addCodeBlock("Move forward");
+      addCodeBlock("Move forward");
+      addCodeBlock("Move forward");
+    }if(level == 2){
+      addCodeBlock("Move forward");
+      addCodeBlock("Move forward");
+      addCodeBlock("Move forward");
+      addCodeBlock("Turn left");
+      addCodeBlock("Move forward");
+      addCodeBlock("Move forward");
+      addCodeBlock("Turn right");
+      addCodeBlock("Move forward");
+      addCodeBlock("Move forward");
+    }if(level == 3){
+      addCodeBlock("Start loop (3)");
+      addCodeBlock("Move forward");
+      addCodeBlock("Move forward");
+      addCodeBlock("End loop");
+    }if(level == 4){
+      addCodeBlock("Start loop (3)");
+      addCodeBlock("Move forward");
+      addCodeBlock("End loop");
+      addCodeBlock("Turn left");
+      addCodeBlock("Start loop (3)");
+      addCodeBlock("Move forward");
+      addCodeBlock("Move forward");
+      addCodeBlock("Turn right");
+      addCodeBlock("End loop");
+      addCodeBlock("Turn left");
+      addCodeBlock("Start loop (3)");
+      addCodeBlock("Move forward");
+      addCodeBlock("Move forward");
+      addCodeBlock("Turn left");
+      addCodeBlock("End loop");
+      addCodeBlock("Turn right");
+      addCodeBlock("Move forward");
+      addCodeBlock("Turn right");
+      addCodeBlock("Start loop (3)");
+      addCodeBlock("Move forward");
+      addCodeBlock("End loop");
+    }
   }
 }
 

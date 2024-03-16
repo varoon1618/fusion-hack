@@ -1,5 +1,7 @@
 package org.example.UI;
 
+import static org.example.UI.GamePanel.currentLevel;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -17,7 +19,6 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import org.example.Game.Game;
-import org.example.UI.Button.RoundedButton;
 
 public class MainPanel extends JLayeredPane implements MouseListener, MouseMotionListener {
 
@@ -84,7 +85,7 @@ public class MainPanel extends JLayeredPane implements MouseListener, MouseMotio
     turnLeftButton.setBounds(620,470,120,40);
 
     //startLoop button
-    JButton startLoopButton = new JButton("Start loop (4)");
+    JButton startLoopButton = new JButton("Start loop (3)");
     startLoopButton.setBackground(new Color(235,45,58));
     startLoopButton.addActionListener(e -> startLoopClicked());
     add(startLoopButton,JLayeredPane.MODAL_LAYER);
@@ -105,6 +106,7 @@ public class MainPanel extends JLayeredPane implements MouseListener, MouseMotio
     rightPanel.setPreferredSize(new Dimension(200,900));
     rightPanel.setMinimumSize(new Dimension(200,900));
     rightPanel.setMaximumSize(new Dimension(200,900));
+    rightPanel.setBackground(new Color (249, 236, 217));
     rightPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 
     codePanel = new CodePanel();
@@ -113,6 +115,7 @@ public class MainPanel extends JLayeredPane implements MouseListener, MouseMotio
     codePanel.setPreferredSize(new Dimension(200,480));
     codePanel.setMinimumSize(new Dimension(200,480));
     codePanel.setMaximumSize(new Dimension(200,480));
+    codePanel.setBackground(new Color (249, 236, 217));
     //codePanel.setBorder(BorderFactory.createLineBorder(Color.black));
 
     buttonPanel = new JPanel();
@@ -122,6 +125,7 @@ public class MainPanel extends JLayeredPane implements MouseListener, MouseMotio
     buttonPanel.setMinimumSize(new Dimension(200,420));
     buttonPanel.setMaximumSize(new Dimension(200,420));
     setupButtonPanel();
+    buttonPanel.setBackground(new Color (249, 236, 217));
     //buttonPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
     rightPanel.add(Box.createVerticalGlue()); // Add glue to center horizontally
@@ -155,10 +159,13 @@ public class MainPanel extends JLayeredPane implements MouseListener, MouseMotio
     JButton showSolutionButton = new JButton("Show Solution");
     showSolutionButton.setMaximumSize(new Dimension(Integer.MAX_VALUE, showSolutionButton.getMinimumSize().height));
     showSolutionButton.setHorizontalAlignment(SwingConstants.CENTER);
-    showSolutionButton.addActionListener(e -> clearAllClicked());
+    showSolutionButton.addActionListener(e -> showSolutionClicked());
     buttonPanel.add(showSolutionButton);
   }
 
+  public void showSolutionClicked(){
+    codePanel.showSolution(currentLevel);
+  }
   public void runCodeClicked(){
     gamePanel.setCodeBlocks(codePanel.getCodeBlocks());
     //codePanel.printFlatCode();
@@ -193,7 +200,7 @@ public class MainPanel extends JLayeredPane implements MouseListener, MouseMotio
     label.setBounds(600,470,100,40);
   }
   public void startLoopClicked(){
-    label = new JLabel("Start loop (4)");
+    label = new JLabel("Start loop (3)");
     //label.setBackground(Color.red);
     label.addMouseListener(this);
     label.addMouseMotionListener(this);

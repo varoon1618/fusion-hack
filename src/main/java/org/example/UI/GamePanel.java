@@ -44,10 +44,11 @@ public class GamePanel extends JPanel {
   private LevelManager levelManager;
   private int[][] currentGrid;
 
-  private int currentLevel = 1;
+  public static int currentLevel = 1;
   CodePanel codePanel;
 
   public GamePanel(CodePanel codePanel) {
+
     initialise(codePanel);
   }
 
@@ -242,5 +243,14 @@ public class GamePanel extends JPanel {
     }
   }
 
+  public String getInfo(int currentLevel){
+    String message = null;
+    if(currentLevel == 1){
+      message = "Your objective is to get the cat on top of the flower"+"\\n"+
+          "Drag and drop Move forward into the code panel to move the cat forward"+"\\n"+
+          "Ignore the other blocks for now";
+    }
+    return message;
+  }
 }
 
