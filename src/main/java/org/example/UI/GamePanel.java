@@ -47,6 +47,15 @@ public class GamePanel extends JPanel {
   public static int currentLevel = 1;
   CodePanel codePanel;
 
+  private BufferedImage autumnTree;
+  private BufferedImage baldTree;
+  private BufferedImage bigTree;
+  private BufferedImage bush;
+  private BufferedImage cherry1;
+  private BufferedImage cherry2;
+  private BufferedImage pinetree1;
+  private BufferedImage stump;
+
   public GamePanel(CodePanel codePanel) {
 
     initialise(codePanel);
@@ -77,6 +86,14 @@ public class GamePanel extends JPanel {
     destinationBlock = imageLoader.getDestination();
     walkingAnimations = imageLoader.getWalkingAnimations();
     idleAnimations = imageLoader.getIdleAnimations();
+    autumnTree = imageLoader.getAutumnTree();
+    baldTree = imageLoader.getBaldTree();
+    bigTree = imageLoader.getBigTree();
+    bush = imageLoader.getBush();
+    cherry1 = imageLoader.getCherry1();
+    cherry2 = imageLoader.getCherry2();
+    pinetree1 = imageLoader.getPinetree1();
+    stump = imageLoader.getStump();
   }
 
   private void setUpGrid(){
@@ -98,10 +115,31 @@ public class GamePanel extends JPanel {
       for(int j=0;j<15;j++){
         if(currentGrid[j][i] == 0){
           g.drawImage(passableBlock,j*64,i*64,64,64,null);
-        }if(currentGrid[j][i] == 1){
+        }if(currentGrid[j][i] >= 1){
           g.drawImage(impassableBlock,j*64,i*64,64,64,null);
         }if(currentGrid[j][i] == -1){
           g.drawImage(destinationBlock,j*64,i*64,64,64,null);
+        }
+      }
+    }
+    for(int i=0;i<7;i++){
+      for(int j=0;j<15;j++){
+        if(currentGrid[j][i] == 2){
+          g.drawImage(autumnTree,j*64,i*64,64,120,null);
+        }if(currentGrid[j][i] == 3){
+          g.drawImage(baldTree,j*64,i*64,64,120,null);
+        }if(currentGrid[j][i] == 4){
+          g.drawImage(bigTree,j*64,i*64,64,120,null);
+        }if(currentGrid[j][i] == 5){
+          g.drawImage(bush,j*64,i*64,64,64,null);
+        }if(currentGrid[j][i] == 6){
+          g.drawImage(cherry1,j*64,i*64,64,120,null);
+        }if(currentGrid[j][i] == 7){
+          g.drawImage(cherry2,j*64,i*64,64,120,null);
+        }if(currentGrid[j][i] == 8){
+          g.drawImage(pinetree1,j*64,i*64,64,120,null);
+        }if(currentGrid[j][i] == 9){
+          g.drawImage(stump,j*64,i*64,64,120,null);
         }
       }
     }
@@ -243,14 +281,5 @@ public class GamePanel extends JPanel {
     }
   }
 
-  public String getInfo(int currentLevel){
-    String message = null;
-    if(currentLevel == 1){
-      message = "Your objective is to get the cat on top of the flower"+"\\n"+
-          "Drag and drop Move forward into the code panel to move the cat forward"+"\\n"+
-          "Ignore the other blocks for now";
-    }
-    return message;
-  }
 }
 

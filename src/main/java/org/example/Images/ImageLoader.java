@@ -14,6 +14,14 @@ public class ImageLoader {
   private final BufferedImage[][] animations = new BufferedImage[12][8];
   private BufferedImage[][] walkingAnimations;
   private BufferedImage[][] idleAnimations;
+  private BufferedImage autumnTree;
+  private BufferedImage baldTree;
+  private BufferedImage bigTree;
+  private BufferedImage bush;
+  private BufferedImage cherry1;
+  private BufferedImage cherry2;
+  private BufferedImage pinetree1;
+  private BufferedImage stump;
   public ImageLoader(){
     importImage();
     loadAnimations();
@@ -61,6 +69,108 @@ public class ImageLoader {
     is = getClass().getResourceAsStream("/destination.png");
     try {
       destinationBlock= ImageIO.read(is);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    } finally {
+      try {
+        is.close();
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+    }
+
+    is = getClass().getResourceAsStream("/autum-tree.png");
+    try {
+      autumnTree= ImageIO.read(is);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    } finally {
+      try {
+        is.close();
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+    }
+    is = getClass().getResourceAsStream("/bald-tree.png");
+    try {
+      baldTree= ImageIO.read(is);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    } finally {
+      try {
+        is.close();
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+    }
+
+    is = getClass().getResourceAsStream("/bigtree.png");
+    try {
+      bigTree= ImageIO.read(is);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    } finally {
+      try {
+        is.close();
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+    }
+
+    is = getClass().getResourceAsStream("/bush.png");
+    try {
+      bush= ImageIO.read(is);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    } finally {
+      try {
+        is.close();
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+    }
+    is = getClass().getResourceAsStream("/cherry1.png");
+    try {
+      cherry1= ImageIO.read(is);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    } finally {
+      try {
+        is.close();
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+    }
+
+    is = getClass().getResourceAsStream("/cherry2.png");
+    try {
+      cherry2= ImageIO.read(is);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    } finally {
+      try {
+        is.close();
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+    }
+
+    is = getClass().getResourceAsStream("/pinetree1.png");
+    try {
+      pinetree1= ImageIO.read(is);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    } finally {
+      try {
+        is.close();
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+    }
+
+    is = getClass().getResourceAsStream("/stump.png");
+    try {
+      stump= ImageIO.read(is);
     } catch (IOException e) {
       throw new RuntimeException(e);
     } finally {
@@ -161,4 +271,38 @@ public class ImageLoader {
   public BufferedImage[][] getIdleAnimations(){
     return idleAnimations;
   }
+
+  public BufferedImage getAutumnTree() {
+    return autumnTree;
+  }
+
+  public BufferedImage getBaldTree() {
+    return baldTree;
+  }
+
+  public BufferedImage getBigTree() {
+    return bigTree;
+  }
+
+  public BufferedImage getCherry1() {
+    return cherry1;
+  }
+
+  public BufferedImage getCherry2() {
+    return cherry2;
+  }
+
+  public BufferedImage getPinetree1() {
+    return pinetree1;
+  }
+
+  public BufferedImage getBush() {
+    return bush;
+  }
+
+  public BufferedImage getStump() {
+    return stump;
+  }
 }
+
+
