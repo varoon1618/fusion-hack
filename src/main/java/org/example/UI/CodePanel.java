@@ -1,12 +1,16 @@
 package org.example.UI;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class CodePanel extends JPanel {
 
@@ -24,23 +28,37 @@ public class CodePanel extends JPanel {
 
   public void initialise(){
     JLabel topLabel = new JLabel("Code Panel");
-    topLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-    topLabel.setBounds(50,0,100,20);
+    topLabel.setMaximumSize(new Dimension(Integer.MAX_VALUE, topLabel.getMinimumSize().height));
+    topLabel.setHorizontalAlignment(SwingConstants.CENTER);
     add(topLabel);
 
   }
 
   public void addCodeBlock(String string){
     JLabel label = new JLabel(string);
-    //label.setAlignmentX(Component.CENTER_ALIGNMENT);
+    label.setBorder(BorderFactory.createLineBorder(Color.black));
+    if(string.equals("Move forward")){
+      label.setBackground(new Color(204, 202, 240));
+    }if(string.equals("Turn right")){
+      label.setBackground(new Color(255, 223, 0));
+    }if(string.equals("Turn left")){
+      label.setBackground(new Color(247, 206, 226));
+    }if(string.equals("Start loop (4)")){
+      label.setBackground(new Color(235,45,58));
+    }if(string.equals("End loop")){
+      label.setBackground(new Color(235,45,58));
+    }
+    label.setMaximumSize(new Dimension(Integer.MAX_VALUE, label.getMinimumSize().height));
+    label.setHorizontalAlignment(SwingConstants.CENTER);
     add(label);
+    label.setOpaque(true);
     updateCodeBlocks(label.getText());
     revalidate();
     repaint();
   }
 
   public void updateCodeBlocks(String command){
-    if(command.equals("Start loop")){
+    if(command.equals("Start loop (4)")){
       isCurrentlyLoop = true;
     }if(command.equals("End loop")) {
       isCurrentlyLoop = false;

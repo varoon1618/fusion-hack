@@ -9,7 +9,7 @@ public class LevelCompletedPopup extends JDialog {
   GamePanel gamePanel;
   CodePanel codePanel;
   public LevelCompletedPopup(JFrame parent, String message,GamePanel gamePanel,CodePanel codePanel) {
-    super(parent, "Level Completed", true);
+    super(parent, "Info", true);
     this.gamePanel = gamePanel;
     this.codePanel = codePanel;
     setLayout(new BorderLayout());
