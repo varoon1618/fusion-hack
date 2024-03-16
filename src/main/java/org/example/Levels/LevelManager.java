@@ -9,7 +9,7 @@ public class LevelManager {
   public int[][] setupGrid(){
     for(int i=0;i<gridHeight;i++){
       for(int j=0;j<gridWidth;j++){
-        grid[j][i] = 1;
+        grid[j][i] = 0;
       }
     }
     return grid;

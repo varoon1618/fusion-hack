@@ -5,7 +5,7 @@ import org.example.UI.GamePanel;
 public class Cat {
 
   // 0 - left ; 1 - up; 2- right; 3- down
-  private int directionFacing = 0;
+  private int directionFacing = 2;
   private boolean idle = true;
   private final GamePanel gamePanel;
   private int currentX ;
@@ -58,13 +58,13 @@ public class Cat {
   public void moveForward(int currentDirection){
     setIdle(false);
     if(currentDirection == 0){
-      //gamePanel.changeXDelta(-4);
+      gamePanel.changeXDelta(-4);
     }if(currentDirection==1){
-      //gamePanel.changeYDelta(-4);
+      gamePanel.changeYDelta(-4);
     }if(currentDirection==2){
-      //gamePanel.changeXDelta(+4);
+      gamePanel.changeXDelta(+4);
     }if(currentDirection==3){
-      //gamePanel.changeYDelta(+4);
+      gamePanel.changeYDelta(+4);
     }
   }
 

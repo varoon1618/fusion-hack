@@ -8,6 +8,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -37,6 +38,14 @@ public class MainPanel extends JLayeredPane implements MouseListener, MouseMotio
     //panel on the right side that includes command panel
     //and button panel
     setupRightPanel();
+    setupGamePanel();
+  }
+
+  public void setupGamePanel(){
+    gamePanel = new GamePanel(codePanel);
+    gamePanel.setBorder(BorderFactory.createLineBorder(Color.black));
+    add(gamePanel,Integer.valueOf(0));
+    gamePanel.setBounds(0,0,960,448);
   }
 
   public void setupCommandPanel(){
@@ -46,7 +55,9 @@ public class MainPanel extends JLayeredPane implements MouseListener, MouseMotio
     commandPanel.setPreferredSize(new Dimension(960,452));
     add(commandPanel,Integer.valueOf(0));
 
+    ImageIcon moveForwardIcon = new ImageIcon("/move-forward.png");
     JButton moveForwardButton = new JButton("Move forward");
+    moveForwardButton.setIcon(moveForwardIcon);
     moveForwardButton.addActionListener(e -> moveForwardClicked());
     add(moveForwardButton,JLayeredPane.MODAL_LAYER);
     moveForwardButton.setBounds(100,470,100,40);
@@ -106,6 +117,7 @@ public class MainPanel extends JLayeredPane implements MouseListener, MouseMotio
   }
 
   public void setupButtonPanel(){
+
     JButton runCodeButton = new JButton("Run Code");
     runCodeButton.setPreferredSize(new Dimension(100,40));
     runCodeButton.setMinimumSize(new Dimension(100,40));
@@ -122,11 +134,13 @@ public class MainPanel extends JLayeredPane implements MouseListener, MouseMotio
   }
 
   public void runCodeClicked(){
-
+    gamePanel.setCodeBlocks(codePanel.getCodeBlocks());
+    //codePanel.printFlatCode();
+    gamePanel.runCommands();
   }
 
   public void clearAllClicked(){
-
+    codePanel.clearAll();
   }
   public void moveForwardClicked(){
     label = new JLabel("Move forward");
