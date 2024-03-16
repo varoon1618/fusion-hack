@@ -15,11 +15,14 @@ public class CodePanel extends JPanel {
   private ArrayList<String> nonLoopCode = new ArrayList<>();
   private boolean isCurrentlyLoop= false;
   public CodePanel(){
-
+    initialise();
   }
 
   public void initialise(){
-
+    JLabel topLabel = new JLabel("Code Panel");
+    topLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+    topLabel.setBounds(50,0,100,20);
+    add(topLabel);
   }
 
   public void addCodeBlock(String string){
